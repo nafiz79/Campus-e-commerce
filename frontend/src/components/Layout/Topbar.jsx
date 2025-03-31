@@ -18,7 +18,7 @@ export const Topbar = () => {
           </a>
         </div>
         <div className="text-sm text-center flex-grow">
-          <span>We ship campuswise - Fast and reliable shipping!</span>
+          <span>Campus Wise Shipping - Your Own Design</span>
         </div>
         <div className="text-sm hidden md:block">
           <a href="tel:+8801792197657" className="hover:text-gray-300">
