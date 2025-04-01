@@ -49,6 +49,12 @@ const Navbar = () => {
           >
             University
           </Link>
+          <Link
+            to="/"
+            className="text-gray-700 hover:text-black text-sm font-medium uppercase"
+          >
+            Other
+          </Link>
         </div>
         {/* Right -Icons */}
         <div className="flex items-center space-x-4">
@@ -110,6 +116,13 @@ const Navbar = () => {
               className="block text-gray-600 hover:text-black"
             >
               University
+            </Link>
+            <Link
+              to="#"
+              onClick={toggleNavDrawer}
+              className="block text-gray-600 hover:text-black"
+            >
+              Other
             </Link>
           </nav>
         </div>
