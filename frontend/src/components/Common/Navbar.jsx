@@ -35,25 +35,25 @@ const Navbar = () => {
             to="/"
             className="text-gray-700 hover:text-black text-sm font-medium uppercase"
           >
-            Engineering
+            MEN
           </Link>
           <Link
             to="/"
             className="text-gray-700 hover:text-black text-sm font-medium uppercase"
           >
-            Medical
+            WOMEN
           </Link>
           <Link
             to="/"
             className="text-gray-700 hover:text-black text-sm font-medium uppercase"
           >
-            University
+            TOP WEAR
           </Link>
           <Link
             to="/"
             className="text-gray-700 hover:text-black text-sm font-medium uppercase"
           >
-            Other
+            BOTTOM WEAR
           </Link>
         </div>
         {/* Right -Icons */}
@@ -101,28 +101,28 @@ const Navbar = () => {
               onClick={toggleNavDrawer}
               className="block text-gray-600 hover:text-black"
             >
-              Engineering
+              MEN
             </Link>
             <Link
               to="#"
               onClick={toggleNavDrawer}
               className="block text-gray-600 hover:text-black"
             >
-              Medical
+              WOMEN
             </Link>
             <Link
               to="#"
               onClick={toggleNavDrawer}
               className="block text-gray-600 hover:text-black"
             >
-              University
+              TOP WEAR
             </Link>
             <Link
               to="#"
               onClick={toggleNavDrawer}
               className="block text-gray-600 hover:text-black"
             >
-              Other
+              BOTTOM WEAR
             </Link>
           </nav>
         </div>
