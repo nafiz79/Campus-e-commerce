@@ -199,7 +199,7 @@ const Checkout = () => {
                 <PayPalButton
                   amount={100}
                   onSuccess={handlePaymentSuccess}
-                  onError={(err) => alert("Payment failed. Try again.")}
+                  onError={() => alert("Payment failed. Try again.")}
                 />
               </div>
             )}

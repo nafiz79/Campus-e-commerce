@@ -9,6 +9,8 @@ import CollectionPage from "./pages/CollectionPage";
 import ProductDetails from "./components/Products/ProductDetails";
 import Checkout from "./components/Cart/Checkout";
 import OrderConfirmationPage from "./pages/OrderConfirmationPage";
+import OrderDetialsPage from "./components/Products/OrderDetialsPage";
+import MyOrdersPage from "./pages/MyOrdersPage";
 
 function App() {
   return (
@@ -27,6 +29,8 @@ function App() {
             path="order-confirmation"
             element={<OrderConfirmationPage />}
           />
+          <Route path="order/:id" element={<OrderDetialsPage />} />
+          <Route path="my-orders" element={<MyOrdersPage />} />
         </Route>
         <Route>{/* Admin Layout*/}</Route>
       </Routes>
