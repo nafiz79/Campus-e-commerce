@@ -1,17 +1,18 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import UserLayout from "./components/Layout/UserLayout";
-import Home from "./pages/Home";
 import { Toaster } from "sonner";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import Profile from "./pages/Profile";
-import CollectionPage from "./pages/CollectionPage";
-import ProductDetails from "./components/Products/ProductDetails";
-import Checkout from "./components/Cart/Checkout";
-import OrderConfirmationPage from "./pages/OrderConfirmationPage";
-import OrderDetialsPage from "./components/Products/OrderDetialsPage";
-import MyOrdersPage from "./pages/MyOrdersPage";
 import AdminLayout from "./components/Admin/AdminLayout";
+import Checkout from "./components/Cart/Checkout";
+import UserLayout from "./components/Layout/UserLayout";
+import OrderDetialsPage from "./components/Products/OrderDetialsPage";
+import ProductDetails from "./components/Products/ProductDetails";
+import AdminHomePage from "./pages/AdminHomePage";
+import CollectionPage from "./pages/CollectionPage";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import MyOrdersPage from "./pages/MyOrdersPage";
+import OrderConfirmationPage from "./pages/OrderConfirmationPage";
+import Profile from "./pages/Profile";
+import Register from "./pages/Register";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
         </Route>
         <Route path="/admin" element={<AdminLayout />}>
           {/* Admin Layout*/}
+          <Route index element={<AdminHomePage />} />
         </Route>
       </Routes>
     </BrowserRouter>
