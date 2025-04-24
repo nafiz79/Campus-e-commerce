@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Toaster } from "sonner";
 import AdminLayout from "./components/Admin/AdminLayout";
+import UserManagement from "./components/Admin/UserManagement";
 import Checkout from "./components/Cart/Checkout";
 import UserLayout from "./components/Layout/UserLayout";
 import OrderDetialsPage from "./components/Products/OrderDetialsPage";
@@ -37,6 +38,7 @@ function App() {
         <Route path="/admin" element={<AdminLayout />}>
           {/* Admin Layout*/}
           <Route index element={<AdminHomePage />} />
+          <Route path="users" element={<UserManagement />} />
         </Route>
       </Routes>
     </BrowserRouter>

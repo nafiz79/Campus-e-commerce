@@ -42,17 +42,6 @@ const AdminSidebar = () => {
           }
         >
           <FaBoxOpen />
-          <span>Users</span>
-        </NavLink>
-        <NavLink
-          to="/admin/users"
-          className={({ isactive }) =>
-            isactive
-              ? "bg-gray-700 text-white py-3 px-4 rounded flex items-center space-x-2"
-              : "text-gray-300 hover:bg-gray-700 hover:text-white py-3 px-4 rounded flex items-centers space-x-2"
-          }
-        >
-          <FaUser />
           <span>Products</span>
         </NavLink>
         <NavLink

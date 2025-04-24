@@ -11,46 +11,6 @@ const AdminHomePage = () => {
       totalPrice: 110,
       status: "Processing",
     },
-    {
-      _id: 12312,
-      user: {
-        name: "John Doe",
-      },
-      totalPrice: 110,
-      status: "Processing",
-    },
-    {
-      _id: 12312,
-      user: {
-        name: "John Doe",
-      },
-      totalPrice: 110,
-      status: "Processing",
-    },
-    {
-      _id: 12312,
-      user: {
-        name: "John Doe",
-      },
-      totalPrice: 110,
-      status: "Processing",
-    },
-    {
-      _id: 12312,
-      user: {
-        name: "John Doe",
-      },
-      totalPrice: 110,
-      status: "Processing",
-    },
-    {
-      _id: 12312,
-      user: {
-        name: "John Doe",
-      },
-      totalPrice: 110,
-      status: "Processing",
-    },
   ];
   return (
     <div className="max-w-7xl mx-auto p-6 ">
