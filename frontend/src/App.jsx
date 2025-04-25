@@ -1,6 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Toaster } from "sonner";
 import AdminLayout from "./components/Admin/AdminLayout";
+import { EditProductPage } from "./components/Admin/EditProductPage";
+import ProductManagement from "./components/Admin/ProductManagement";
 import UserManagement from "./components/Admin/UserManagement";
 import Checkout from "./components/Cart/Checkout";
 import UserLayout from "./components/Layout/UserLayout";
@@ -39,6 +41,8 @@ function App() {
           {/* Admin Layout*/}
           <Route index element={<AdminHomePage />} />
           <Route path="users" element={<UserManagement />} />
+          <Route path="products" element={<ProductManagement />} />
+          <Route path="products/:id/edit" element={<EditProductPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
