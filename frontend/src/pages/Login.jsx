@@ -2,20 +2,25 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import login from "../assets/login.webp";
 
-const Login = () => {
-  const [email, setEmail] = useState(null);
-  const [password, setPassword] = useState(null);
+import { useDispatch } from "react-redux";
+import { loginUser } from "../redux/slices/authSlice";
 
-  const handleSumbit = (e) => {
+const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("User Login:", { email, password });
+    //console.log("Submitting login:", email, password);
+    dispatch(loginUser({ email, password }));
   };
 
   return (
     <div className="flex">
       <div className="w-full md:w-1/2 flex flex-col justify-center items-center p-8 md:p-12">
         <form
-          onSubmit={handleSumbit}
+          onSubmit={handleSubmit}
           className="w-full max-w-md bg-white p-8 rounded-lg border shadow-sm"
         >
           <div className="flex justify-center mb-6">

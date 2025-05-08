@@ -1,15 +1,19 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import register from "../assets/register.webp";
+import { registerUser } from "../redux/slices/authSlice";
 
 const Register = () => {
-  const [name, setName] = useState(null);
-  const [email, setEmail] = useState(null);
-  const [password, setPassword] = useState(null);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
 
   const handleSumbit = (e) => {
     e.preventDefault();
-    console.log("User Registered:", { name, email, password });
+    //console.log("User Registered:", { name, email, password });
+    dispatch(registerUser({ name, email, password }));
   };
 
   return (
