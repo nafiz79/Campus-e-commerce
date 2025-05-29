@@ -88,7 +88,7 @@ router.post("/", async (req, res) => {
 // @desc Update product quantity in the cart for a guest or logged-in user
 // @access Public
 
-router.put("/", protect, async (req, res) => {
+router.put("/", async (req, res) => {
   const { productId, quantity, size, color, guestId, userId } = req.body;
   try {
     let cart = await getCart(userId, guestId);
