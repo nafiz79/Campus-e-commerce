@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
 const FilterSidebar = () => {
@@ -16,7 +16,7 @@ const FilterSidebar = () => {
     maxPrice: 100,
   });
   const [priceRange, setPriceRange] = useState([0, 100]);
-  const categories = ["Top Wear", "Bottom wear"];
+  const categories = ["Top Wear", "Bottom Wear"];
   const colors = [
     "Red",
     "Blue",
@@ -222,9 +222,9 @@ const FilterSidebar = () => {
       </div>
       {/* Price Range Filter */}
       <div className="mb-8">
-        <lable className="block text-gray-600 font-medium mb-2 ">
+        <label className="block text-gray-600 font-medium mb-2 ">
           Price Range
-        </lable>
+        </label>
         <input
           type="range"
           name="priceRange"

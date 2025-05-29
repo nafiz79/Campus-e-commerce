@@ -1,9 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-// Async Thunk to Fetch Products by Collection and optional filters
 export const fetchProductsByFilters = createAsyncThunk(
-  "products/fetechByfilters",
+  "products/fetchByfilters",
   async ({
     collection,
     size,
@@ -19,7 +18,8 @@ export const fetchProductsByFilters = createAsyncThunk(
     limit,
   }) => {
     const query = new URLSearchParams();
-    if (collection) query.append("collection", collection);
+    if (collection && collection !== "all")
+      query.append("collection", collection);
     if (size) query.append("size", size);
     if (color) query.append("color", color);
     if (gender) query.append("gender", gender);
@@ -32,9 +32,12 @@ export const fetchProductsByFilters = createAsyncThunk(
     if (brand) query.append("brand", brand);
     if (limit) query.append("limit", limit);
 
-    const response = await axios.get(
-      `${import.meta.env.VITE_BACKEND_URL}/api/products?${query.toString()}`
-    );
+    const url = `${
+      import.meta.env.VITE_BACKEND_URL
+    }/api/products?${query.toString()}`;
+    // console.log("Fetching products from URL:", url);
+
+    const response = await axios.get(url);
     return response.data;
   }
 );
@@ -50,7 +53,7 @@ export const fetchProductsDetails = createAsyncThunk(
   }
 );
 
-// Async thunk to fetch similar products
+// Async thunk to update a product
 export const updateProduct = createAsyncThunk(
   "products/updateProduct",
   async ({ id, productData }) => {
@@ -78,12 +81,12 @@ export const fetchSimilarProducts = createAsyncThunk(
   }
 );
 
-// Managing product related state
+// Managing product-related state
 const productSlice = createSlice({
   name: "products",
   initialState: {
     products: [],
-    selectedProduct: null, //Store the details of the single Product
+    selectedProduct: null,
     similarProducts: [],
     loading: false,
     error: null,
@@ -123,7 +126,7 @@ const productSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      // handle fetching products with filter
+      // Fetch products
       .addCase(fetchProductsByFilters.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -136,7 +139,8 @@ const productSlice = createSlice({
         state.loading = false;
         state.error = action.error.message;
       })
-      //   Handling fetching single product details
+
+      // Fetch single product details
       .addCase(fetchProductsDetails.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -149,33 +153,35 @@ const productSlice = createSlice({
         state.loading = false;
         state.error = action.error.message;
       })
-      //   Handle updating product
+
+      // Update product
       .addCase(updateProduct.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
       .addCase(updateProduct.fulfilled, (state, action) => {
         state.loading = false;
-        const updateProduct = action.payload;
+        const updatedProduct = action.payload;
         const index = state.products.findIndex(
-          (product) => product._id === updateProduct._id
+          (product) => product._id === updatedProduct._id
         );
         if (index !== -1) {
-          state.products[index] = updateProduct;
+          state.products[index] = updatedProduct;
         }
       })
       .addCase(updateProduct.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       })
-      //   Handling similar Products
+
+      // Fetch similar products
       .addCase(fetchSimilarProducts.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
       .addCase(fetchSimilarProducts.fulfilled, (state, action) => {
         state.loading = false;
-        state.products = action.payload;
+        state.similarProducts = action.payload; // ✅ Corrected
       })
       .addCase(fetchSimilarProducts.rejected, (state, action) => {
         state.loading = false;

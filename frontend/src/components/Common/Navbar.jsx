@@ -1,13 +1,13 @@
-import { Link } from "react-router-dom";
-import {
-  HiOutlineUser,
-  HiOutlineShoppingBag,
-  HiBars3BottomRight,
-} from "react-icons/hi2";
-import SearchBar from "./SearchBar";
-import CartDrawer from "../Layout/CartDrawer";
 import { useState } from "react";
+import {
+  HiBars3BottomRight,
+  HiOutlineShoppingBag,
+  HiOutlineUser,
+} from "react-icons/hi2";
 import { IoMdClose } from "react-icons/io";
+import { Link } from "react-router-dom";
+import CartDrawer from "../Layout/CartDrawer";
+import SearchBar from "./SearchBar";
 
 const Navbar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -32,25 +32,25 @@ const Navbar = () => {
         {/* Center -Navigation Links */}
         <div className="hidden md:flex space-x-6 ">
           <Link
-            to="/collections/all"
+            to="/collections/all?gender=Men"
             className="text-gray-700 hover:text-black text-sm font-medium uppercase"
           >
             MEN
           </Link>
           <Link
-            to="/"
+            to="/collections/all?gender=Women"
             className="text-gray-700 hover:text-black text-sm font-medium uppercase"
           >
             WOMEN
           </Link>
           <Link
-            to="/"
+            to="/collections/all?category=Top Wear"
             className="text-gray-700 hover:text-black text-sm font-medium uppercase"
           >
             TOP WEAR
           </Link>
           <Link
-            to="/"
+            to="/collections/all?category=Bottom Wear"
             className="text-gray-700 hover:text-black text-sm font-medium uppercase"
           >
             BOTTOM WEAR
@@ -103,28 +103,28 @@ const Navbar = () => {
           <h2 className="text-xl font-semibold mb-4">Menu</h2>
           <nav className="space-y-4">
             <Link
-              to="/collections/all"
+              to="to=/collections/all?gender=Men"
               onClick={toggleNavDrawer}
               className="block text-gray-600 hover:text-black"
             >
               MEN
             </Link>
             <Link
-              to="#"
+              to="to=/collections/all?gender=Women"
               onClick={toggleNavDrawer}
               className="block text-gray-600 hover:text-black"
             >
               WOMEN
             </Link>
             <Link
-              to="#"
+              to="to=/collections/all?category=Top Wear"
               onClick={toggleNavDrawer}
               className="block text-gray-600 hover:text-black"
             >
               TOP WEAR
             </Link>
             <Link
-              to="#"
+              to="to=/collections/all?category=Bottom Wear"
               onClick={toggleNavDrawer}
               className="block text-gray-600 hover:text-black"
             >
