@@ -46,7 +46,7 @@ router.put("/:id/pay", protect, async (req, res) => {
     if (!checkout) {
       return res.status(404).json({ message: "Checkout not found" });
     }
-    if (paymentStatus === "Paid") {
+    if (paymentStatus === "paid") {
       checkout.isPaid = true;
       checkout.paymentStatus = paymentStatus;
       checkout.paymentDetails = paymentDetails;
