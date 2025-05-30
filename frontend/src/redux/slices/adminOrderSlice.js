@@ -22,12 +22,12 @@ export const fetchAllOrders = createAsyncThunk(
 );
 // update order delivery status
 export const updateOrderStatus = createAsyncThunk(
-  "adminOrders/fetchOrderStatus",
-  async (id, status, { rejectWithValue }) => {
+  "adminOrders/updateOrderStatus",
+  async ({ id, status }, { rejectWithValue }) => {
     try {
-      const response = await axios.get(
+      const response = await axios.put(
         `${import.meta.env.VITE_BACKEND_URL}/api/admin/orders/${id}`,
-        { status },
+        { status }, // send new status in request body
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("userToken")}`,
@@ -36,10 +36,11 @@ export const updateOrderStatus = createAsyncThunk(
       );
       return response.data;
     } catch (error) {
-      return rejectWithValue(error.response.data);
+      return rejectWithValue(error.response?.data || "Update failed");
     }
   }
 );
+
 // Delete an order
 export const deleteOrder = createAsyncThunk(
   "adminOrders/deleteOrder",
@@ -78,20 +79,22 @@ const adminOrderSlice = createSlice({
         state.error = null;
       })
       .addCase(fetchAllOrders.fulfilled, (state, action) => {
-        state.loading = true;
-        state.error = action.payload;
+        state.loading = false;
+        state.error = null;
+
+        state.orders = action.payload;
         state.totalOrders = action.payload.length;
 
-        // calculate total sales
         const totalSales = action.payload.reduce((acc, order) => {
           return acc + order.totalPrice;
         }, 0);
         state.totalSales = totalSales;
       })
       .addCase(fetchAllOrders.rejected, (state, action) => {
-        state.loading = true;
-        state.error = action.payload.message;
+        state.loading = false;
+        state.error = action.payload?.message || "Failed to fetch orders";
       })
+
       // Update Order Status
       .addCase(updateOrderStatus.fulfilled, (state, action) => {
         const updatedOrder = action.payload;
