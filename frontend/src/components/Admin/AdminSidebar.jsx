@@ -61,7 +61,7 @@ const AdminSidebar = () => {
           <span>Orders</span>
         </NavLink>
         <NavLink
-          to="/admin/shop"
+          to="/"
           className={({ isactive }) =>
             isactive
               ? "bg-gray-700 text-white py-3 px-4 rounded flex items-center space-x-2"
